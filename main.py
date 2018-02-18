@@ -110,7 +110,7 @@ while True:
 					while isinstance(comments[-1], praw.models.MoreComments):
 						if moreCalls == 0:
 							try:
-								message.reply("This looks like a big thread, it might be a few minutes until I finish"+footer)
+								message.reply("This looks like a big thread, it might take a while"+footer)
 							except Exception as err:
 								log.debug("Exception replying to message")
 
