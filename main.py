@@ -123,7 +123,7 @@ while True:
 
 					authors = set()
 					for comment in comments:
-						if comment.depth == 0:
+						if comment.depth == 0 and comment.author is not None:
 							authors.add(comment.author)
 
 					authorObjects = []
@@ -131,6 +131,9 @@ while True:
 					for i, author in enumerate(authors):
 						if (i + 1) % 10 == 0:
 							log.debug("Authors: {} / {}".format(i + 1, len(authors)))
+						if not hasattr(author, 'created_utc'):
+							log.debug("Bad redditor object: {}".format(author))
+							continue
 						created = datetime.utcfromtimestamp(author.created_utc)
 						now = datetime.utcnow()
 
