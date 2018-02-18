@@ -131,7 +131,11 @@ while True:
 					for i, author in enumerate(authors):
 						if (i + 1) % 10 == 0:
 							log.debug("Authors: {} / {}".format(i + 1, len(authors)))
-						if not hasattr(author, 'created_utc'):
+						try:
+							if not hasattr(author, 'created_utc'):
+								log.debug("Bad redditor object: {}".format(author))
+								continue
+						except Exception as err:
 							log.debug("Bad redditor object: {}".format(author))
 							continue
 						created = datetime.utcfromtimestamp(author.created_utc)
