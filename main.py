@@ -106,6 +106,12 @@ def insertSorted(authorIn, tableIn, sort='none'):
 				tableIn.insert(i, authorIn)
 				inserted = True
 				break
+	elif sort == 'in':
+		for i, author in enumerate(tableIn):
+			if author['in'] > authorIn['in']:
+				tableIn.insert(i, authorIn)
+				inserted = True
+				break
 	else:
 		tableIn.append(authorIn)
 
@@ -189,7 +195,7 @@ while True:
 							authorObject = {'name': str(author), 'age': (now - created).days, 'in': commentsInSub, 'out': commentsOutSub}
 							if len(authorObject['name']) > nameMaxLength:
 								nameMaxLength = len(authorObject['name'])
-							authorObjects = insertSorted(authorObject, authorObjects, 'age')
+							authorObjects = insertSorted(authorObject, authorObjects, 'in')
 
 						if len(authors) % 10 != 0:
 							log.debug("Authors: {} / {}".format(len(authors), len(authors)))
