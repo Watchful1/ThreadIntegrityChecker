@@ -208,7 +208,7 @@ while True:
 							authorString.append(string)
 							authorString.append("\n")
 
-						pasteoutput = paste("Thread summary: {}{}".format("https://www.reddit.com", submission.permalink), ''.join(authorString)).decode('utf-8')
+						pasteoutput = paste("Thread summary", ''.join(authorString)).decode('utf-8')
 
 						if "pastebin.com" in pasteoutput:
 							log.debug("Finished pasting: {}".format(pasteoutput))
